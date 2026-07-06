@@ -1,7 +1,7 @@
 /* ============================================================
    FROST — brand & theme config.
    This is the ONLY file most rebrands need. No CSS editing required.
-   Last updated via Site Editor: 2026-07-06T03:20:47.404Z
+   Last updated via Site Editor: 2026-07-06T13:53:03.217Z
    ============================================================ */
 
 /* ---------- Pick a theme, or override colors completely below ---------- */
@@ -120,8 +120,8 @@ const CONFIG = {
   "gallery": [
     {
       "label": "Kitchen deep clean",
-      "before": null,
-      "after": null
+      "before": "images/1783345971197-20231023-141814.jpg",
+      "after": "images/1783345975095-screen-shot-2026-04-20-at-12.28.11-am.png"
     },
     {
       "label": "Bathroom detail",
