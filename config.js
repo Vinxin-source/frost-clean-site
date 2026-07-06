@@ -1,7 +1,7 @@
 /* ============================================================
    FROST — brand & theme config.
    This is the ONLY file most rebrands need. No CSS editing required.
-   Last updated via Site Editor: 2026-07-06T13:54:47.538Z
+   Last updated via Site Editor: 2026-07-06T13:55:54.568Z
    ============================================================ */
 
 /* ---------- Pick a theme, or override colors completely below ---------- */
@@ -15,7 +15,11 @@ const THEMES = {
 
 const CONFIG = {
   "theme": "charcoalGold",
-  "colors": null,
+  "colors": {
+    "blue": "#ed35e7",
+    "blueDeep": "#0f8f24",
+    "blueBright": "#ff4d4d"
+  },
   "business": {
     "name": "Frost",
     "logoUrl": "images/1783307719134-logo.png.jpeg",
