@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Site Editor</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232F6FED'/%3E%3Ccircle cx='16' cy='16' r='7' fill='white' fill-opacity='0.9'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+
+<!-- ===================== GATE (setup or lock) ===================== -->
+<div id="gate" class="gate">
+  <div class="gate-card glass glass-strong">
+    <div class="gate-brand"><span class="brand-dot"></span> Site Editor</div>
+
+    <!-- first-run setup -->
+    <div id="gateSetup" class="gate-panel" hidden>
+      <h1>Set up your editor</h1>
+      <p class="gate-sub">This runs once per site. You're creating a password for this editor and (optionally) connecting it to the GitHub repo this site lives in, so Save can publish changes live.</p>
+
+      <label class="f-label">Editor password</label>
+      <input type="password" id="setupPass" class="f-input" placeholder="Choose a password" autocomplete="new-password">
+      <label class="f-label">Confirm password</label>
+      <input type="password" id="setupPass2" class="f-input" placeholder="Type it again" autocomplete="new-password">
+
+      <div class="gate-divider">GitHub connection (optional — you can skip and just download files instead)</div>
+
+      <label class="f-label">Repo owner / organization</label>
+      <input type="text" id="setupOwner" class="f-input" placeholder="e.g. yourname">
+      <label class="f-label">Repository name</label>
+      <input type="text" id="setupRepo" class="f-input" placeholder="e.g. client-cleaning-site">
+      <label class="f-label">Branch</label>
+      <input type="text" id="setupBranch" class="f-input" placeholder="main" value="main">
+      <label class="f-label">Personal access token <span class="f-hint">(Contents: read &amp; write, this repo only)</span></label>
+      <input type="password" id="setupToken" class="f-input" placeholder="github_pat_..." autocomplete="off">
+      <label class="f-label">Live site URL <span class="f-hint">(optional, shown after publishing)</span></label>
+      <input type="text" id="setupSiteUrl" class="f-input" placeholder="https://yoursite.vercel.app">
+
+      <button id="setupSubmit" class="btn-primary" type="button">Finish setup</button>
+      <div id="setupError" class="gate-error" hidden></div>
+    </div>
+
+    <!-- returning: password lock -->
+    <div id="gateLock" class="gate-panel" hidden>
+      <h1>Enter your password</h1>
+      <p class="gate-sub">This just keeps casual visitors out of the editor — it's not a public login system.</p>
+      <input type="password" id="lockPass" class="f-input" placeholder="Password" autocomplete="current-password">
+      <button id="lockSubmit" class="btn-primary" type="button">Unlock</button>
+      <div id="lockError" class="gate-error" hidden></div>
+      <button id="forgotBtn" class="link-btn" type="button">Forgot password / start over</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== DASHBOARD ===================== -->
+<div id="dash" class="dash" hidden>
+
+  <header class="admin-topbar glass glass-strong">
+    <div class="admin-brand"><span class="brand-dot"></span> Site Editor</div>
+    <div class="admin-topbar-actions">
+      <span id="statusText" class="status-text"></span>
+      <button id="downloadBtn" class="btn-ghost" type="button">Download config.js</button>
+      <button id="publishBtn" class="btn-primary btn-small" type="button">Save &amp; Publish</button>
+      <button id="lockAgainBtn" class="btn-ghost" type="button" title="Lock editor">Lock</button>
+    </div>
+  </header>
+
+  <div class="admin-body-grid">
+    <nav class="admin-nav glass" id="adminNav"></nav>
+
+    <main class="admin-form-panel">
+      <div id="formSections"></div>
+    </main>
+
+    <aside class="admin-preview-panel">
+      <div class="preview-frame-wrap glass">
+        <div class="preview-toolbar">
+          <span>Live preview — updates as you type</span>
+          <div class="preview-page-tabs" id="previewTabs"></div>
+        </div>
+        <iframe id="previewFrame" class="preview-frame" title="Live site preview"></iframe>
+      </div>
+    </aside>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+</div>
+
+<script src="config.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
